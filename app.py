@@ -1,3 +1,5 @@
+from transformers import SegformerConfig, SegformerForSemanticSegmentation
+from huggingface_hub import hf_hub_download
 import streamlit as st
 import torch
 import numpy as np
@@ -297,9 +299,15 @@ st.markdown("""
 # =========================================================
 # MODEL SETTINGS
 # =========================================================
-MODEL_PATH = "best_model.pth"
 
 IMAGE_SIZE = 256
+
+HF_REPO = "Shailendra555/BhesBhusa-AI-model"
+
+MODEL_PATH = hf_hub_download(
+    repo_id=HF_REPO,
+    filename="best_model.pth"
+)
 
 CLASS_NAMES = [
     "background",
